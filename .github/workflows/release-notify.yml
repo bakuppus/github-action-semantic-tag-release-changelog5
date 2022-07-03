@@ -1,25 +1,18 @@
-name: Act on release created
+name: Notify Release
 
 on:
   release:
     types:
       - created
-      - published
-
 
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    timeout-minutes: 5
 
-      - name: Notify Slack on Release
-        uses: instantish/notify-slack-on-release@1.0.0
+    steps:
+      - name: Notify Slack
+        id: slack
         with:
           slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-
-      - name: Notify release to Slack
-        uses: lizefield/notify-release-to-slack@v1.0
-        with:
-          slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-          releaseMessage: ${{ github.event.release.body }}
+        uses: fedecalendino/slack-release-notifier@v1.0.0
