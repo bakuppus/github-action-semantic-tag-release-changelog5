@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: tag
+          ref: 'release'
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -60,13 +60,13 @@ jobs:
           release_name: Release ${{ github.ref }}
           body: ${{steps.build_changelog.outputs.changelog}}
           draft: false
-          prerelease: true
+          prerelease: false
 
 
       - name: Notify release
         uses: nearform/github-action-notify-release@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 
       - name: Slack Notification
