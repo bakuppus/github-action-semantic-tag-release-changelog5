@@ -1,9 +1,8 @@
-name: Notify Slack on Release
+name: Act on release created
 
 on:
   release:
-    types:
-      - created
+    types: [created]
 
 
 jobs:
@@ -11,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-
 
       - name: Notify Slack on Release
         uses: instantish/notify-slack-on-release@1.0.0
