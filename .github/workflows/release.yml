@@ -63,14 +63,10 @@ jobs:
           prerelease: false
 
 
-      - name: Release notification
-        uses: stormwarning/action-release-notification@v1
+      - name: Notify Slack on Release
+        uses: instantish/notify-slack-on-release@1.0.0
         with:
-          channel: cicd
-          message: A new version is out!
-          actions: '[{"text": "View changelog 🎉", "url": "CHANGELOG.md"},{"text": "View docs 📚", "url": "https://foo.com"}]'
-        env:
-          SLACKBOT_TOKEN: ${{ secrets.SLACKBOT_TOKEN }}
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 
       - name: Slack Notification
