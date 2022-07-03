@@ -1,12 +1,10 @@
-name: Deploy to dev
+name: Deploy to qa
 
 on:
   push:
     branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+      - test
+
 
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
