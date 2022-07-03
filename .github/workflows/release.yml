@@ -63,11 +63,10 @@ jobs:
           prerelease: false
 
 
-      - name: Notify release to Slack
-        uses: lizefield/notify-release-to-slack@v1.0
+      - name: Notify Slack on Release
+        uses: instantish/notify-slack-on-release@1.0.0
         with:
-          slackWebhookUrl: ${{ secrets.SLACK_WEBHOOK_URL }}
-          releaseMessage: ${{ github.event.release.body }}
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 
       - name: Slack Notification
