@@ -4,24 +4,16 @@ on:
   release:
     types:
       - created
-      - published
+
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: github.event.base_ref == 'refs/heads/release'
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: 'release'
 
-      - name: Publish
-        uses: Actions-R-Us/actions-tagger@latest
-        with:
-          publish_latest: true
-        env:
-          GITHUB_TOKEN: '${{secrets.GITHUB_TOKEN}}'
 
 
       - name: Notify Slack on Release
