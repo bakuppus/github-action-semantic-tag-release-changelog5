@@ -63,10 +63,14 @@ jobs:
           prerelease: false
 
 
-      - name: Notify release
-        uses: nearform/github-action-notify-release@v1
+      - name: Release notification
+        uses: stormwarning/action-release-notification@v1
         with:
-          github-token: ${{ secrets.SLACK_WEBHOOK_URL }}
+          channel: cicd
+          message: A new version is out!
+          actions: '[{"text": "View changelog 🎉", "url": "CHANGELOG.md"},{"text": "View docs 📚", "url": "https://foo.com"}]'
+        env:
+          SLACKBOT_TOKEN: ${{ secrets.SLACKBOT_TOKEN }}
 
 
       - name: Slack Notification
