@@ -60,13 +60,13 @@ jobs:
           release_name: Release ${{ github.ref }}
           body: ${{steps.build_changelog.outputs.changelog}}
           draft: false
-          prerelease: true
+          prerelease: false
 
 
       - name: Notify release
         uses: nearform/github-action-notify-release@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 
       - name: Slack Notification
