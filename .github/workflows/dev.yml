@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - develop
-  pull_request:
-    branches:
-      - develop
+
 
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
