@@ -1,0 +1,39 @@
+{
+	"name": "robots-parser",
+	"version": "3.0.0",
+	"description": "A specification compliant robots.txt parser with wildcard (*) matching support.",
+	"scripts": {
+		"test:report": "echo no test specified && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/samclarke/robots-parser.git"
+	},
+	"author": "Sam Clarke <sam@samclarke.com>",
+	"license": "MIT",
+	"files": [
+		"/Robots.js",
+		"/index.js",
+		"/index.d.ts",
+		"/README.md",
+		"/LICENSE.md",
+		"/CHANGELOG.md",
+		"/SECURITY.md",
+		".gitignore"
+	],
+	"engines": {
+		"node": ">=0.10"
+	},
+	"prettier": {
+		"tabWidth": 4,
+		"useTabs": true,
+		"singleQuote": true,
+		"trailingComma": "none"
+	},
+	"devDependencies": {
+		"chai": "^4.3.4",
+		"mocha": "^9.1.3",
+		"nyc": "^15.1.0"
+	},
+	"types": "./index.d.ts"
+}
