@@ -2,9 +2,7 @@ name: Notify Slack on Release
 
 on:
   release:
-    types:
-      - created
-      - published
+
 jobs:
   notify_slack:
     runs-on: ubuntu-latest
