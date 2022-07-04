@@ -19,7 +19,11 @@ env:
 jobs:
   prod-deploy:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
+    if:
+      contains('
+      refs/tags/v
+      refs/heads/main
+      ', github.ref)
 
     strategy:
       matrix:
