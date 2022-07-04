@@ -4,6 +4,10 @@ name: Deploy to prod
 on:
   workflow_dispatch:
     inputs:
+      branch:
+        description: 'branch to deploy'
+        required: true
+        default: 'main'
       name:
         description: 'Tag to deploy'
         required: true
