@@ -71,9 +71,10 @@ jobs:
           channel: '#cicd'
         if: always()
 
-      - name: Checkout latest release tag
-        run: |
-          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=RELEASE_VERSION::${GITHUB_REF/refs\/tags\//}
+        shell: bash
 
 
 
@@ -86,7 +87,7 @@ jobs:
           channel-id: 'C03LF80E4JH'
           payload: |
             {
-              "text": "GitHub Release version : $LATEST_TAG is published!",
+              "text": "GitHub Release version : $RELEASE_VERSION is published!",
               "blocks": [
                 {
                   "type": "section",
