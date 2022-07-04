@@ -92,7 +92,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "GitHub Release by : *Author:*\n ${{ github.actor }}"
+                    "text": "GitHub Release by : *Author:*\n ${{ github.event.pusher.name }}"
                   }
                 }
               ]
