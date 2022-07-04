@@ -12,18 +12,17 @@ on:
       release-version:
         description: 'Release version tag'
         required: true
-
+  release:
+    types:
+      - released
+permissions:
+  contents: write
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
   prod-deploy:
     runs-on: ubuntu-latest
-    if:
-      contains('
-      refs/tags/v
-      refs/heads/main
-      ', github.ref)
 
     strategy:
       matrix:
