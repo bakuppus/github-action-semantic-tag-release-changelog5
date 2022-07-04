@@ -1,11 +1,9 @@
 name: Notify Release
 
 on:
-  release:
-    types:
-      - created
-      - released
-      - published
+  push:
+    tags:
+      - 'v*'
 
 
 jobs:
