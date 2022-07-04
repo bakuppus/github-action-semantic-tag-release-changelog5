@@ -1,4 +1,4 @@
-name: Release
+name: Release & Deploy to stg
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
 
 permissions: write-all
 jobs:
-  release:
+  build-deploy:
     runs-on: ubuntu-latest
     if: github.event.base_ref == 'refs/heads/release'
     strategy:

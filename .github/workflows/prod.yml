@@ -4,26 +4,24 @@ name: Deploy to prod
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'branch'
+      name:
+        description: 'Tag to deploy'
         required: true
-        options: ['main']
-        default: 'main'
-      release-version:
-        description: 'Release version tag'
-        required: true
+        default: 'latest'
+  release:
+    types:
+      - released
+      - created
+      - published
+
+permissions: write-all
 
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
-  prod-deploy:
+  build-deploy:
     runs-on: ubuntu-latest
-    if:
-      contains('
-      refs/tags/v
-      refs/heads/main
-      ', github.ref)
 
     strategy:
       matrix:
