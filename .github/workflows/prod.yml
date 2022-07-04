@@ -1,10 +1,10 @@
 name: Deploy to prod
-
+concurrency: prod
 on:
   workflow_dispatch:
-    inputs:
+    release:
       version:
-        description: 'The version to deploy'
+        description: 'The release to deploy'
         required: true
 
 
