@@ -71,18 +71,14 @@ jobs:
           channel: '#cicd'
         if: always()
 
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
-        shell: bash
-        env:
-          RELEASE_VERSION: ${{ steps.get_version.outputs.tag }}
 
 
 
       - name: Slack Notification on Release
         if: success()
         uses: slackapi/slack-github-action@v1.19.0
+        id: get_version
+        run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
         env:
           INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           RELEASE_VERSION: ${{ steps.get_version.outputs.tag }}
