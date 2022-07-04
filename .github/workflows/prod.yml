@@ -3,9 +3,8 @@ concurrency: prod
 on:
   workflow_dispatch:
     release:
-      version:
-        description: 'The release to deploy'
-        required: true
+      description: 'The release to deploy'
+      required: true
 
 
 env:
