@@ -2,8 +2,8 @@ name: Deploy to prod
 
 on:
   release:
-    tags:
-      - 'v*'
+    types:
+      - created
   repository_dispatch:
     types:
       - prismic_content_update
