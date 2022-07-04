@@ -53,15 +53,17 @@ jobs:
 
       - name: Create release
         id: create_release
-        uses: actions/create-release@latest
+        uses: aaiezza/create-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          body: ${{steps.build_changelog.outputs.changelog}}
+          release_branch: release
+          tag: ${{ github.ref }}
+          name:  version ${{ github.ref }}
+          message: ${{steps.build_changelog.outputs.changelog}}
           draft: false
           prerelease: false
+          create_release: true
 
 
 
