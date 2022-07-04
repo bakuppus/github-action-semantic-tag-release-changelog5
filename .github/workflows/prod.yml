@@ -1,10 +1,11 @@
 name: Deploy to prod
-concurrency: prod
+
 on:
+  release:
+    types:
+      - create
+      - published
   workflow_dispatch:
-    release:
-      description: 'The release to deploy'
-      required: true
 
 
 env:
