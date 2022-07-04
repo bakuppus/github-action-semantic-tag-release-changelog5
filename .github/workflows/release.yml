@@ -77,42 +77,17 @@ jobs:
         env:
           INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          channel-id: '#cicd'
+          channel-id: 'C03LF80E4JH'
           payload: |
-            [
-              {
-                "type": "header",
-                "text": {
-                  "type": "plain_text",
-                  "text": "${{ github.event.release.tag_name}} is published!"
+            {
+              "text": "${{ github.event.release.tag_name}} is published!",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Author:*\n${{ github.actor }}"
+                  }
                 }
-              },
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*Author:*\n${{ github.actor }}"
-                }
-              },
-               {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*Information:*"
-                }
-              },
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": ${{ toJSON(github.event.release.body) }}
-                }
-              },
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "${{ github.event.release.html_url }}"
-                }
-              }
-            ]
+              ]
+            }
