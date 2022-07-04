@@ -73,12 +73,12 @@ jobs:
 
       - name: Slack Notification on Release
         if: success()
-        uses: tokorom/action-slack-incoming-webhook@main
+        uses: slackapi/slack-github-action@v1.19.0
         env:
           INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
-          text: A release is published.
-          blocks: |
+          channel-id: '#cicd'
+          payload: |
             [
               {
                 "type": "header",
