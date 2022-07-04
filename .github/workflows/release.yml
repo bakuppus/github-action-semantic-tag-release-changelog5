@@ -74,17 +74,3 @@ jobs:
 
 
 
-      - name: Slack Notification on Release
-        if: success()
-        uses: slackapi/slack-github-action@v1.19.0
-        id: get_version
-        run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
-        env:
-          INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          RELEASE_VERSION: ${{ steps.get_version.outputs.tag }}
-        with:
-          channel-id: 'C03LF80E4JH'
-          payload: |
-            {
-              "text": "GitHub Release version : $RELEASE_VERSION is published by ${{ github.actor }}"
-            }
