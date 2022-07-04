@@ -73,8 +73,10 @@ jobs:
 
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=RELEASE_VERSION::${GITHUB_REF/refs\/tags\//}
+        run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
         shell: bash
+        env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
 
 
 
@@ -87,14 +89,5 @@ jobs:
           channel-id: 'C03LF80E4JH'
           payload: |
             {
-              "text": "GitHub Release version : $RELEASE_VERSION is published!",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "GitHub Release by : *Author:*\n ${{ github.event.pusher.name }}"
-                  }
-                }
-              ]
+              "text": "GitHub Release version : $RELEASE_VERSION is published by {{ actor }}"
             }
