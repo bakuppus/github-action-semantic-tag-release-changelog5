@@ -59,7 +59,7 @@ jobs:
         with:
           release_branch: release
           tag: ${{ github.ref }}
-          name:  version ${{ github.ref }}
+          name:  ${{ github.ref }}
           message: ${{steps.build_changelog.outputs.changelog}}
           draft: false
           prerelease: false
