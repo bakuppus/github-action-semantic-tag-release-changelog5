@@ -65,13 +65,10 @@ jobs:
           prerelease: false
           create_release: true
 
-
-
       - name: Slack Notification
         uses: act10ns/slack@v1
         with:
           status: ${{ job.status }}
           config: .github/slack.yml
-
           channel: '#cicd'
         if: always()

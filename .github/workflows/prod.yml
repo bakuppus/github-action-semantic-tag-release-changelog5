@@ -9,7 +9,7 @@ on:
         required: true
         default: 'main'
       name:
-        description: 'Tag to deploy'
+        description: 'tag to deploy'
         required: true
         default: 'latest'
   release:
