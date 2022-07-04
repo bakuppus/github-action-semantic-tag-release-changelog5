@@ -4,11 +4,14 @@ name: Deploy to prod
 on:
   workflow_dispatch:
     inputs:
-      releaseStage:
-        description: 'alpha, beta or production release (alpha does not upload to TestFlight)'
+      branch:
+        description: 'branch'
         required: true
-        default: 'beta'
-
+        options: ['main']
+        default: 'main'
+      release-version:
+        description: 'Release version tag'
+        required: true
 
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -16,7 +19,11 @@ env:
 jobs:
   prod-deploy:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
+    if:
+      contains('
+      refs/tags/v
+      refs/heads/main
+      ', github.ref)
 
     strategy:
       matrix:
