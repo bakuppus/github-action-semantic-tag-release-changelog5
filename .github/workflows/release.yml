@@ -71,6 +71,12 @@ jobs:
           channel: '#cicd'
         if: always()
 
+      - name: Checkout latest release tag
+        run: |
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+
+
+
       - name: Slack Notification on Release
         if: success()
         uses: slackapi/slack-github-action@v1.19.0
@@ -80,7 +86,7 @@ jobs:
           channel-id: 'C03LF80E4JH'
           payload: |
             {
-              "text": "GitHub Release version : ${{ github.ref }} is published!",
+              "text": "GitHub Release version : ${{ $LATEST_TAG }} is published!",
               "blocks": [
                 {
                   "type": "section",
