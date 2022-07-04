@@ -1,11 +1,13 @@
 name: Deploy to prod
 
+
 on:
-  release:
-    types:
-      - create
-      - published
   workflow_dispatch:
+    inputs:
+      releaseStage:
+        description: 'alpha, beta or production release (alpha does not upload to TestFlight)'
+        required: true
+        default: 'beta'
 
 
 env:
