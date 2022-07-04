@@ -15,8 +15,11 @@ on:
   release:
     types:
       - released
-permissions:
-  contents: write
+      - created
+      - published
+
+permissions: write-all
+
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
