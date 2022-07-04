@@ -1,8 +1,8 @@
 name: Notify Release
 
 on:
-  push:
-    tags:
+  release:
+    types:
       - created
       - published
 
