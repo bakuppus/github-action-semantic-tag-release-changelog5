@@ -10,7 +10,7 @@ env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
 
     strategy:
