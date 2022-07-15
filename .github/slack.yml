@@ -1,8 +1,6 @@
 username: GitHub-CI
 icon_url: https://octodex.github.com/images/mona-the-rivetertocat.png
 
-pretext: Job Status {{icon jobStatus}}
-
 text: Triggered via {{eventName}} by {{actor}}
 
 fallback: |-
@@ -21,7 +19,7 @@ fields:
   - title: Actor
     value: "{{actor}}"
     short: true
-  - title: Job Status
+  - title: Job Status {{icon jobStatus}}
     value: "{{jobStatus}}"
     short: true
 
