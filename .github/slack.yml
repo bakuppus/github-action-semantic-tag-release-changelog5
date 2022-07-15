@@ -16,9 +16,6 @@ fields:
   - title: Git Ref
     value: "{{ref}} ({{refType}})"
     short: true
-  - title: Actor
-    value: "{{actor}}"
-    short: true
   - title: Job Status {{icon jobStatus}}
     value: "{{jobStatus}}"
     short: true
