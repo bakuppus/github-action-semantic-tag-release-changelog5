@@ -2,8 +2,11 @@ username: GitHub-CI
 icon_url: https://octodex.github.com/images/mona-the-rivetertocat.png
 
 pretext: Job Status {{icon jobStatus}}
+
 text: Triggered via {{eventName}} by {{actor}}
 
+fallback: |-
+  [GitHub] {{workflow}} #{{runNumber}} {{jobName}} is {{jobStatus}}
 
 fields:
   - title: Job Details
@@ -11,9 +14,6 @@ fields:
     short: true
   - title: Repo Name
     value: <{{repositoryUrl}}|{{repositoryName}}>
-    short: true
-  - title: Github Action Workflow
-    value: "<{{workflowUrl}}|{{workflow}}>"
     short: true
   - title: Git Ref
     value: "{{ref}} ({{refType}})"
