@@ -1,7 +1,7 @@
 username: GitHub-CI
 icon_url: https://octodex.github.com/images/mona-the-rivetertocat.png
 
-text: Triggered via {{eventName}} by {{actor}}
+text: Triggered via {{eventName}} by {{actor}} on <{{repositoryUrl}}|{{repositoryName}}>
 
 fallback: |-
   [GitHub] {{workflow}} #{{runNumber}} {{jobName}} is {{jobStatus}}
@@ -9,9 +9,6 @@ fallback: |-
 fields:
   - title: Job Details
     value: "{{#each jobSteps}}{{icon this.outcome}} {{@key}}\n{{/each}}"
-    short: true
-  - title: Repo Name
-    value: <{{repositoryUrl}}|{{repositoryName}}>
     short: true
   - title: Git Ref
     value: "{{ref}} ({{refType}})"
