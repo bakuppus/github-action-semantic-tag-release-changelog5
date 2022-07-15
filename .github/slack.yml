@@ -1,9 +1,6 @@
-title: GitHub Actions
-
 pretext: Triggered via {{eventName}} by {{actor}} on <{{repositoryUrl}}|{{repositoryName}}>
 
 text: |
-  {{#if description}}<{{diffUrl}}|`{{diffRef}}`> - {{description}}{{/if}}
   {{#if payload.commits}}
   *Commits*
   {{#each payload.commits}}
