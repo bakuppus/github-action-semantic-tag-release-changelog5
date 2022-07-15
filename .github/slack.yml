@@ -1,4 +1,9 @@
+username: GitHub-CI
+icon_url: https://octodex.github.com/images/mona-the-rivetertocat.png
+
+pretext: Job Status {{icon jobStatus}}
 text: Triggered via {{eventName}} by {{actor}}
+
 
 fields:
   - title: Job Details
