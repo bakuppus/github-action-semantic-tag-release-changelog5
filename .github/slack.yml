@@ -1,5 +1,13 @@
+title: GitHub Actions
 
-text: Triggered via {{eventName}} by {{actor}} on <{{repositoryUrl}}|{{repositoryName}}>
+pretext: Triggered via {{eventName}} by {{actor}} on <{{repositoryUrl}}|{{repositoryName}}>
+
+text: |
+  *Commits*
+  {{#each payload.commits}}
+  <{{this.url}}|`{{truncate this.id 8}}`> - {{this.message}}
+  {{/each}}
+  {{/if}}
 
 
 fields:
