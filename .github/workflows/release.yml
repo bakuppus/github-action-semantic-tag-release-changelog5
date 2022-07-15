@@ -53,17 +53,15 @@ jobs:
 
       - name: Create release
         id: create_release
-        uses: aaiezza/create-release@master
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          release_branch: release
-          tag: ${{ github.ref }}
-          name:  version ${{ github.ref }}
-          message: ${{steps.build_changelog.outputs.changelog}}
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: ${{steps.build_changelog.outputs.changelog}}
           draft: false
           prerelease: false
-          create_release: true
 
       - name: Slack Notification
         uses: act10ns/slack@v1
@@ -72,3 +70,7 @@ jobs:
           config: .github/slack.yml
           channel: '#cicd'
         if: always()
+
+
+
+

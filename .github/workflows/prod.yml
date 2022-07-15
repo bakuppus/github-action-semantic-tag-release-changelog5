@@ -14,9 +14,8 @@ on:
         default: 'latest'
   release:
     types:
-      - released
       - created
-      - published
+
 
 permissions: write-all
 
