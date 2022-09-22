@@ -47,6 +47,13 @@ jobs:
         with:
           api_key: 0f9188ad-5530-440a-bea7-17f8ce110ae3
 
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Slack Notification
         uses: act10ns/slack@v1
         with:
