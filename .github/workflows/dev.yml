@@ -23,11 +23,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -44,6 +40,12 @@ jobs:
           echo "npm build"
           npm run compile
           npm run dist
+
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: success() || failure()
+        with:
+          api_key: 0f9188ad-5530-440a-bea7-17f8ce110ae3
 
       - name: Slack Notification
         uses: act10ns/slack@v1
